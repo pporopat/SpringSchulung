@@ -5,10 +5,7 @@ import at.javatraining.trainings.entities.Trainer;
 import at.javatraining.trainings.entities.Training;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
-import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -42,6 +39,7 @@ public class TestDataConfig {
 
     @Bean
     @Scope("prototype")
+    @Profile("profile1")
     Student philipp() {
         return Student.builder()
                 .name("Philipp")
@@ -51,6 +49,7 @@ public class TestDataConfig {
 
     @Bean
     @Scope("prototype")
+    @Profile("profile2")
     Student david() {
         return Student.builder()
                 .name("David")
@@ -79,10 +78,10 @@ public class TestDataConfig {
     @Bean
     Training springTraining(@Value("#{trainerMichael}") Trainer trainer,
                             @Value("#{philipp}") Student philipp,
-                            @Value("#{david}") Student david) {
+                            @Value("#{marcel}") Student marcel) {
         return Training.builder()
                 .title("Spring Training")
-                .students(new ArrayList<>(List.of(philipp, david)))
+                .students(new ArrayList<>(List.of(philipp, marcel)))
                 .trainer(trainer)
                 .begin(LocalDate.parse("2019-11-25"))
                 .end(LocalDate.parse("2019-11-29"))
@@ -94,7 +93,7 @@ public class TestDataConfig {
     Training microservicesTraining() {
         return Training.builder()
                 .trainer(trainerBernhard())
-                .students(new ArrayList<>(List.of(marcel(), david(), mladen())))
+                .students(new ArrayList<>(List.of(marcel(), philipp(), mladen())))
                 .title("Microservices Training")
                 .trainer(trainerBernhard())
                 .begin(LocalDate.parse("2019-12-02"))

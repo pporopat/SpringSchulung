@@ -1,3 +1,35 @@
+25.11.2019
+
+IoC Inversion of Control
+	--> Factory
+	--> Naming Service
+	
+Container enthält Komponenten und kann diese zurückgeben falls nötig
+Container löst Abhängigkeiten auf --> Dependency Injection
+--> DI Container
+Bean definition via xml, @nnotations oder Java code
+	implizit mit @nnotations (@Component)
+	explizit mit xml oder Java code
+	
+Standartmäßig sind Spring Beans Singletons (Beim Startup inizialisiert)
+
+JavaEE
+	Client Tier (Browser, App, ...)
+	Presentation Tier (JSF, ThymeLeaf, html templates, Rest) (@Controller, @RestController)
+	Buisness Tier (Logik & Transaktionen) (@Service)
+	Integration Tier (Kapselung Datenzugriff) (@Respository)
+	Resource Tier (normalerweise nicht in unserer Anwendung)
+	
+@Autowired (Constructor dependency injection)
+	Parameter für Konstruktor kommt aus Container
+	@Inject ist standard für JavaEE (CDI Framework verwendet aber Inject, also verwirrend)
+	
+@Component (@Named)
+
+Explizite Bean Definition in Java @Configuration
+	@Bean (name="abcd")
+	Mehrere Beans vom selben Typ möglich (Unterscheidung über den Namen)
+
 Lombok
     settings > Annotation Processors > Enable annotation processing
     Lombok Plugin installieren
@@ -13,3 +45,35 @@ Lombok
         equals
 
 wenn man einer Bean keinen Namen gibt, wird der Methodenname verwendet.
+
+Ist ein Profile gesetzt, wird dieses ignoriert, außer diese Profile ist gesetzt
+    Profiles in Umgebungsvariablen findet man oft auf Container Lösungen
+        java -D spring.profiles.acticve=<profileNamesSeperatedByComma>
+    kann auch über application.properties gesetzt werden (wird von Umgebungsvariablen überschrieben)
+    
+Configuration kann dynamisch über einen Config Server geladen werden.
+
+Conditions werden beispielsweise genutzt, um zu builden je nachdem, was im classpath ist
+
+@Primary --> Component hat Vorzug bei DI
+
+Eigene Annotations
+    --> immer RetentionPolicy.RUNTIME, um Annotations auch in ByteCode zu übernehmen
+    
+_______________________________________________________________________________________________________________________________________
+
+26.11.2019
+
+_______________________________________________________________________________________________________________________________________
+
+27.11.2019
+
+_______________________________________________________________________________________________________________________________________
+
+28.11.2019
+
+_______________________________________________________________________________________________________________________________________
+
+29.11.2019
+
+_______________________________________________________________________________________________________________________________________
