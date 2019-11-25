@@ -1,0 +1,15 @@
+Lombok
+    settings > Annotation Processors > Enable annotation processing
+    Lombok Plugin installieren
+    
+@SpringBootApplication
+    alles in Subverzeichnissen wird von Spring erkannt.
+    
+@Data
+    generiert
+        getters/setters
+        toString
+        hashCode
+        equals
+
+wenn man einer Bean keinen Namen gibt, wird der Methodenname verwendet.

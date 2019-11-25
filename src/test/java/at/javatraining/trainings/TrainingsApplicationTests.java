@@ -55,6 +55,9 @@ class TrainingsApplicationTests {
     @Value("#{tim}")
     Student tim;
 
+    @Value("#{patrick}")
+    Student patrick;
+
     @Test
     void testDI() {
         assertNull(trainer.getId());
@@ -103,9 +106,12 @@ class TrainingsApplicationTests {
     }
 
     @Test
-    void testTim() {
+    void testTimAndPatrick() {
         assertNotNull(tim);
         System.out.println(tim);
+
+        assertNotNull(patrick);
+        System.out.println(patrick);
     }
 
     @Autowired

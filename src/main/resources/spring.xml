@@ -9,7 +9,7 @@
         <property name="email" value="tim@java.at" />
     </bean>
 
-    <bean id="Patrick" class="at.javatraining.trainings.entities.Student"
+    <bean id="patrick" class="at.javatraining.trainings.entities.Student"
           c:name="Patrick"
           c:email="patrick@mail.com" />
 </beans>
