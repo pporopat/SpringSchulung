@@ -64,6 +64,63 @@ ________________________________________________________________________________
 
 26.11.2019
 
+Beim Scope mit Session kann man angeben, ob mit Klassen oder Interfaces gearbeitet werden kann.
+
+Mit $ statt # kann man Property file values injizieren
+
+Aspects
+    Über den ProceedingJoinPoint kriegt man alle AufrufInfos
+    
+JPA
+    owning side ist die mit dem Fremdschlüssel drinnen
+    Flyway --> DB Versionierung
+    
+    Entity Manager auf keinen Fall aufheben, immer nur für eine Transaktion
+        Entity Manager cached Resultate und gibt diese an User
+        User kann Daten ändern
+        EM überprüft, was sich geändert hat und schreibt das in die DB
+        
+        em.flush() zwingt EM, die Daten in die Datenbank zu schieben.l
+        
+        die managed entity aus em.merge() immer speichern, das ist die neue managed entity
+    
+    Möglichkeiten
+        in properties DB oder Entities setzen
+        JPARepository interface mit Standardmethoden
+        Methodenname
+        @Query
+        
+    RepositoryCustom als 2. Parameter für eigene Methoden
+    
+    DerbyDB setup
+        dependency ins pom
+        zip runterladen und entpacken
+        
+    @Entity von javax.persistence
+    
+    Zusammengesetzte Primärschlüssel --> Embeddable implementieren und dann zu ID Member mittels @EmbeddedId anfügen
+    
+    EnumType.STRING statt ORDINAL verwenden, weil bei Löschen eines Wertes sich das ganze Enum sonst verschiebt
+        --> noch besser ist eine Tabelle fürs Enum mit Referenz durch Fremdschlüssel
+        
+    JpaRepository implementieren genügt, um es zur Bean zu machen.
+    
+    end und begin sind reservierte Keywords, nicht als Columns verwenden
+    
+    JPA zu Project Structure Modules hinzufügen für bessere Unterstützung
+    
+    
+    
+    ToOne Beziehungen werden umgehend aus der Datenbank geholt. (Eager)
+    ToMany Beziehungen werden lazy geladen
+    
+    In ToMany ist die owning site immer die n Seite
+    
+    
+    
+    Reihenfolge der persist() ist wichtig. Natürlich müssen erst die Entities persistiert werden, bevor Fremdschlüssel auf sie referenzieren können.
+    Dies kann auch gemeinsam passieren, kommt aber auf den UseCase an, da vielleicht nicht der ganze Baum, sondern nur die oberste Klasse oder ähnliches gespeichert werden sollen (zB Training ohne Students)
+    
 _______________________________________________________________________________________________________________________________________
 
 27.11.2019

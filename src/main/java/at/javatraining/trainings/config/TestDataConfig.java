@@ -49,7 +49,6 @@ public class TestDataConfig {
 
     @Bean
     @Scope("prototype")
-    @Profile("profile2")
     Student david() {
         return Student.builder()
                 .name("David")

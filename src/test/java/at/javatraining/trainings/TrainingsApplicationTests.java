@@ -15,8 +15,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@SpringBootTest
-class TrainingsApplicationTests {
+class TrainingsApplicationTests extends SpringBaseTest{
     // @Autowired
     private Trainer trainer;
 
