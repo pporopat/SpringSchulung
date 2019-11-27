@@ -21,6 +21,6 @@ public class TrainingRepoCustomImpl implements TrainingRepoCustom{
 
     @Override
     public Training saveUsingMerge(Training training) {
-        return null;
+        return em.merge(training);
     }
 }

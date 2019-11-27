@@ -9,12 +9,11 @@ import org.springframework.context.annotation.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Configuration
 @Slf4j
-@ImportResource("spring.xml")
+@ImportResource("classpath:spring.xml")
 public class TestDataConfig {
     @Bean(name="trainerMichael")
     @Scope("prototype")

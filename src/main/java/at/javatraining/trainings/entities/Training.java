@@ -20,15 +20,19 @@ public class Training {
     private Long id;
     private String title;
 
-    @Column(name = "trainingBegin")
+    @Column(name = "training_begin")
     private LocalDate begin;
 
-    @Column(name = "trainingEnd")
+    @Column(name = "training_end")
     private LocalDate end;
 
-    @Transient
+    @JoinColumn(name="id_trainer")
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Trainer trainer;
 
-    @Transient
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(name="training_students",
+            joinColumns = @JoinColumn(name="id_training"),
+            inverseJoinColumns = @JoinColumn(name="id_student"))
     private List<Student> students;
 }
